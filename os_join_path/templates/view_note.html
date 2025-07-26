@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Xem Note - Path Traversal Lab{% endblock %}
+
+{% block content %}
+<div class="header">
+    <h1>📄 Nội dung Note</h1>
+    <p>File: <code>{{ filename }}</code></p>
+</div>
+
+<div class="file-info">
+    <strong>📁 Đường dẫn file:</strong> {{ filepath }}
+</div>
+
+<div class="note-content">{{ content }}</div>
+
+<div class="nav-links">
+    <a href="/dashboard" class="btn">📋 Về Dashboard</a>
+    <a href="/logout" class="btn btn-danger">🚪 Đăng xuất</a>
+</div>
+{% endblock %} 

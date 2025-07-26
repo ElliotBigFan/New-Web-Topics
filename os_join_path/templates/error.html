@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}{{ error_title }} - Path Traversal Lab{% endblock %}
+
+{% block content %}
+<div class="alert alert-{{ alert_type }}">
+    <strong>{{ error_icon }} {{ error_title }}:</strong> {{ error_message }}
+</div>
+
+<div class="nav-links">
+    {% for link in links %}
+        <a href="{{ link.url }}" class="btn {{ link.class }}">{{ link.text }}</a>
+    {% endfor %}
+</div>
+{% endblock %} 

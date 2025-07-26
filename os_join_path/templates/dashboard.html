@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard - Path Traversal Lab{% endblock %}
+
+{% block content %}
+<div class="header">
+    <h1>📋 Dashboard</h1>
+    <p>Xin chào, <strong>{{ username }}</strong>!</p>
+</div>
+
+<div class="form-container">
+    <h3>📝 Tạo Note mới</h3>
+    <form method="POST" action="/save_note">
+        <div class="form-group">
+            <label for="note">Nội dung note:</label>
+            <textarea id="note" name="note" rows="5" placeholder="Nhập nội dung note của bạn..." required></textarea>
+        </div>
+        <div class="nav-links">
+            <button type="submit" class="btn">💾 Lưu Note</button>
+            <a href="/view_note" class="btn btn-secondary">👀 Xem Note</a>
+            <a href="/logout" class="btn btn-danger">🚪 Đăng xuất</a>
+        </div>
+    </form>
+</div>
+
+<div class="hint-container">
+    <h3>💡 Gợi ý khai thác</h3>
+    <p>Bạn có muốn xem gợi ý để khai thác lỗ hổng không?</p>
+    <button id="showHint" class="btn btn-secondary" onclick="toggleHint()">🔍 Xem gợi ý</button>
+    
+    <div id="hintContent" class="security-hint" style="display: none;">
+        <h4>🎯 Cách khai thác lỗ hổng:</h4>
+        
+        <div class="hint-step">
+            <strong>Bước 1:</strong> Đăng xuất và đăng ký lại với username đặc biệt
+        </div>
+        
+        <div class="hint-step">
+            <strong>Bước 2:</strong> Thử username: <code>/flag.txt</code>
+        </div>
+        
+        <div class="hint-step">
+            <strong>Bước 3:</strong> Đăng nhập và tạo note
+        </div>
+        
+        <div class="hint-step">
+            <strong>Bước 4:</strong> Xem note để đọc file flag!
+        </div>
+        
+        <div class="alert alert-info">
+            <strong>🔍 Lý do:</strong> Hàm <code>is_safe_username()</code> chỉ chặn <code>../</code> nhưng không biết về absolute path!
+        </div>
+        
+        <div class="nav-links">
+            <a href="/logout" class="btn btn-danger">🚪 Đăng xuất để thử</a>
+        </div>
+    </div>
+</div>
+
+<script>
+function toggleHint() {
+    const hintContent = document.getElementById('hintContent');
+    const showHintBtn = document.getElementById('showHint');
+    
+    if (hintContent.style.display === 'none') {
+        hintContent.style.display = 'block';
+        showHintBtn.textContent = '🙈 Ẩn gợi ý';
+        showHintBtn.classList.remove('btn-secondary');
+        showHintBtn.classList.add('btn-danger');
+    } else {
+        hintContent.style.display = 'none';
+        showHintBtn.textContent = '🔍 Xem gợi ý';
+        showHintBtn.classList.remove('btn-danger');
+        showHintBtn.classList.add('btn-secondary');
+    }
+}
+</script>
+{% endblock %} 

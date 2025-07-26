@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Đăng ký - Path Traversal Lab{% endblock %}
+
+{% block content %}
+<div class="header">
+    <h1>📝 Đăng ký tài khoản</h1>
+    <p>Tạo tài khoản để tham gia lab</p>
+</div>
+
+<div class="form-container">
+    <form method="POST">
+        <div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required placeholder="Nhập username...">
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required placeholder="Nhập password...">
+        </div>
+        <div class="nav-links">
+            <button type="submit" class="btn">📝 Đăng ký</button>
+            <a href="/" class="btn btn-secondary">Về trang chủ</a>
+        </div>
+    </form>
+</div>
+{% endblock %} 
