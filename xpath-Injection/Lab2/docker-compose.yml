@@ -1,0 +1,19 @@
+version: '3'
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: sqli_lab
+    ports:
+      - "3307:3306"
+    volumes:
+      - ./mysql:/docker-entrypoint-initdb.d
+
+  web:
+    build: ./web
+    ports:
+      - "8082:80"
+    depends_on:
+      - db

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruby Regex Whitelist Bypass Lab</title>
+    <style>
+        body { font-family: sans-serif; max-width: 600px; margin: 2em auto; padding: 0 1em; }
+        h1, h2 { color: #333; }
+        textarea { width: 100%; min-height: 100px; margin-bottom: 1em; }
+        input[type="submit"] { padding: 0.5em 1em; background-color: #007bff; color: white; border: none; cursor: pointer; }
+        input[type="submit"]:hover { background-color: #0056b3; }
+        .result { margin-top: 1em; padding: 1em; border: 1px solid #ccc; background-color: #f9f9f9; }
+        .result.valid { border-color: #28a745; background-color: #e9f7ec; }
+        .result.invalid { border-color: #dc3545; background-color: #f8d7da; }
+        .explanation { background-color: #fef9e7; padding: 1em; border-left: 4px solid #f1c40f; }
+    </style>
+</head>
+<body>
+    <h1>Ruby Regex Whitelist Bypass Lab</h1>
+    <div class="explanation">
+        <p>This lab demonstrates a common vulnerability in Ruby's regex engine. The <code>^</code> anchor, by default, matches the beginning of any <strong>line</strong>, not the beginning of the entire <strong>string</strong>.</p>
+        <p>The backend is validating URLs using <code>/^https/</code>. Try to bypass this whitelist to inject a <code>javascript:</code> payload.</p>
+        <p><strong>Hint:</strong> How can you make <code>https</code> appear at the start of a new line within the same string?</p>
+    </div>
+
+    <form action="/" method="post">
+        <h2>Enter a URL to validate:</h2>
+        <textarea name="url" placeholder="e.g., https://example.com"><%= url %></textarea>
+        <input type="submit" value="Validate">
+    </form>
+
+    <% if result %>
+        <% is_valid = result.include?("is valid") %>
+        <div class="result <%= is_valid ? 'valid' : 'invalid' %>">
+            <h2>Validation Result:</h2>
+            <p><%= result %></p>
+        </div>
+    <% end %>
+</body>
+</html> 

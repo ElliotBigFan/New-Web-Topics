@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  webapp:
+    build: .
+    container_name: ruby-regex-lab
+    ports:
+      - "4567:4567"
+    restart: unless-stopped 

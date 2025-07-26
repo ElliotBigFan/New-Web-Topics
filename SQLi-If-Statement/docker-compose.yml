@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  web:
+    build: ./web
+    ports:
+      - "8090:80"
+    environment:
+      MYSQL_HOST: db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: rootpass
+      MYSQL_DB: labdb
+    depends_on:
+      - db
+    volumes:
+      - ./web:/var/www/html
+
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: labdb
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
