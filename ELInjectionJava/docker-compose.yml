@@ -1,0 +1,7 @@
+version: "3.8"
+
+services:
+  spel-lab:
+    build: .
+    ports:
+      - "9993:8080"

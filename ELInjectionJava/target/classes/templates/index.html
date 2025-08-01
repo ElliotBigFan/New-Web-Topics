@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SpEL Injection Lab</title>
+</head>
+<body>
+<h2>SpEL Injection Lab</h2>
+<form method="post" action="/eval">
+    <label>Enter Expression: </label>
+    <input type="text" name="expr">
+    <input type="submit" value="Evaluate">
+</form>
+
+<p>Result: <span th:text="${result}">N/A</span></p>
+</body>
+</html>

