@@ -1,0 +1,4 @@
+[+] Run command in docker:
+    php make_phar.php
+    rm -rf info.php
+    mv payload.phar .. 
