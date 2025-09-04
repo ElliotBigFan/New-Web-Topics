@@ -1,0 +1,2 @@
+https://www.4rth4s.xyz/2020/06/root-me-local-file-inclusion-wrappers.html
+https://hieuhdh.github.io/rootme/web-server/php/local_file_inclusion_wrappers/#buoc-2-tao-code-attack
