@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Eval JSON Injection Demo</title>
+</head>
+<body>
+  <h2>Demo: eval với JSON lỗi</h2>
+  <p>Nếu bạn thấy alert(origin) bật lên thì chứng tỏ eval bị khai thác.</p>
+
+  <script>
+    // ✅ Bình thường server sẽ trả JSON an toàn
+    // var responseText = '{"results":[],"searchTerm":"coffee"}';
+    var input_attacker = '"}; alert(origin); //';
+    // 🚨 JSON bị attacker chèn lỗi để chèn JavaScript
+    var responseText = '{"results":[],"searchTerm":"' + input_attacker + '"}';
+
+    // Dùng eval (rất nguy hiểm)
+    eval('var searchResultsObj = ' + responseText);
+
+    console.log("searchResultsObj =", searchResultsObj);
+  </script>
+</body>
+</html>
