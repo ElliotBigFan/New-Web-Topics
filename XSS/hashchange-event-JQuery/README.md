@@ -1,11 +1,12 @@
 
 # Port Swigger: [LAB] DOM XSS in jQuery selector sink using a hashchange event
+
+## Vấn đề: Vì sao `<img src=x onerror=alert(1)>` thường thành công còn `<script>…</script>` hay `<iframe src=x onload=alert(1)>` thường thất bại khi đưa HTML vào `$(...)` ?
+
 ---
 
-## Vì sao `<img src=x onerror=alert(1)>` thường thành công còn `<script>…</script>` hay `<iframe src=x onload=alert(1)>` thường thất bại khi đưa HTML vào `$(...)` 
-
----
 ## Lab thực hành:
+
 - https://portswigger.net/web-security/cross-site-scripting/dom-based/lab-jquery-selector-hash-change-event
 
 ## Tóm tắt ngắn
@@ -105,6 +106,5 @@ Vì vậy trong nhiều lab DOM XSS, payload an toàn và đáng tin nhất đ�
 ## Ghi chú thêm
 
 - Hành vi thực tế có thể thay đổi giữa các phiên bản jQuery và các browser. Luôn test trên môi trường mục tiêu.
-- Nếu muốn payload `<script>` chạy, cách an toàn là tạo script element bằng `document.createElement('script')`, gán `text` hoặc `src` rồi append — cách này đảm bảo script được thực thi.
  
 *Hết.*
