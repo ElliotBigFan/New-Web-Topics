@@ -1,0 +1,43 @@
+<!doctype html>
+<html ng-app>
+  <head>
+    <meta charset="utf-8">
+    <title>AngularJS XSS Demo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular.min.js"></script>
+  </head>
+  <body>
+    <h3>Demo Search</h3>
+    <input id="q" type="text" placeholder="Tìm kiếm...">
+    <button onclick="doSearch()">Tìm</button>
+
+    <div id="search-results"></div>
+
+    <script>
+      function encodeHTML (str) {
+            if (str == null) return '';
+            return String(str)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#x27;')
+            .replace(/`/g, '&#x60;');
+      }
+
+      function doSearch() {
+        const val = encodeHTML(document.getElementById('q').value);
+        // thay vì encode, ta chuyển hướng trang kèm query string
+        location.search = '?q=' + encodeURIComponent(val);
+      }
+
+      // lấy query string param q
+      const params = new URLSearchParams(location.search);
+      const q = params.get('q') || '';
+
+      if (q) {
+        // DANGER: chèn thẳng q vào innerHTML -> Angular sẽ evaluate nếu có {{...}}
+        document.getElementById('search-results').innerHTML = "Kết quả cho: " + q;
+      }
+    </script>
+  </body>
+</html>
